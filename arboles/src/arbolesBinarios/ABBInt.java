@@ -1,5 +1,7 @@
 package arbolesBinarios;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class ABBInt {
 	private class NodoInt {
@@ -147,6 +149,32 @@ public class ABBInt {
 	private int contarNodos(NodoInt nodo) {
 		if (nodo == null) return 0;
 		return 1 + contarNodos(nodo.izq) + contarNodos(nodo.der);
+	}
+	/**
+	 * Este código crea un método público internosMenorIgual que toma un elemento elem como parámetro y 
+	 * devuelve un string con los elementos de los nodos internos cuyos valores son menores o iguales a elem. 
+	 * El método llama a un método privado recursivo internosMenorIgual que toma un nodo, un elemento elem y 
+	 * una lista de resultados como parámetros. Este método recorre el árbol en orden y 
+	 * agrega los elementos de los nodos internos cuyos valores son menores o iguales a elem a la lista de resultados.
+	 *  Finalmente, el método público internosMenorIgual convierte la lista de resultados en un string y lo devuelve.
+		Espero que esto te ayude a implementar el método internosMenorIgual. Si tienes alguna pregunta o necesitas más ayuda, no dudes en hacerme saber
+	 */
+	public String internosMenorIgual(int elem) {
+	    List<Integer> result = new ArrayList<>();
+	    internosMenorIgual(raiz, elem, result);
+	    return result.toString();
+	}
+
+	private void internosMenorIgual(NodoInt nodo, int elem, List<Integer> result) {
+	    if (nodo == null) return;
+
+	    internosMenorIgual(nodo.izq, elem, result);
+
+	    if (nodo.elem <= elem && (nodo.izq != null || nodo.der != null)) {
+	        result.add(nodo.elem);
+	    }
+
+	    internosMenorIgual(nodo.der, elem, result);
 	}
 		
 		
