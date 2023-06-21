@@ -83,11 +83,77 @@ public class ABB<T extends Comparable<T>> extends AB<T>  {
 	}
 	/**
 	 * Un nodo es hoja si no tiene hijos izq y der
-	 * @return
 	 */
 	protected boolean esHoja(Nodo nodo) {
 		return nodo.izq == null && nodo.der == null;
 	}
+	/**
+	 * El metodo debe retornar la cantidad de nodos cuyos valor es mayor el que el
+	 * elem y no son hojas. resollver... 
+	 * -Sin utilizar el metodo esHoja 
+	 * -Utilizando
+	 * el IREP de un ABB para escribiir el algoritmo 
+	 * IREP ARBOL BINARIO: ● Se puede
+	 * llegar a todos los nodos desde la raíz ● Cada nodo tiene un solo padre ● No
+	 * tiene ciclos ● Cada nodo puede tener a lo sumo 2 hijos. ABB(a) sii a es un AB
+	 * tal que -Todos los nodos de a.izq son menos que a.info -Todos los nodos de
+	 * a.der son mayores que a.info -ABB(a.izq) -ABB(a.der)
+	 */
+	
+	/**
+	 * es interno si tiene 1 o mas hijos en este caso por IREP maximo dos hijos
+	 */
+	protected boolean esInterno(Nodo nodo) {
+		return nodo.izq != null || nodo.der != null;
+	}
+	public int mayoresNoHojas(T elem) {
+		if(raiz == null) {
+			return 0;
+		}
+		return mayoresNoHojas(raiz, elem);
+	}
+	protected int mayoresNoHojas(Nodo nodo, T elem) {
+		if(nodo == null) {
+			return 0;
+		}
+		if(nodo.elem.compareTo(elem) > 0 && esInterno(nodo)) {
+			return 1;
+		}
+		return mayoresNoHojas(nodo.izq, elem) + mayoresNoHojas(nodo.der, elem);
+	}
+	/**
+	 * crear un metodo String elemsDesde(T elem) que retorna un String con los elementos de los nodos
+	 *  que hay que recorrer desde elem hasta la llegar a la raiz.
+	 * - Si elem no esta en el arbol, se debe retornar "";
+	 * - Si el arbol se encuentra vacio retorna "";
+	 */
+	public String elemsDesde(T elem) {
+		if(raiz == null) {
+			return "";
+		}
+		return elemsDesde(raiz, elem);
+	}
+	protected String elemsDesde(Nodo nodo, T elem) {
+		if(nodo == null) {
+			return "";
+		}
+		if(nodo.elem.equals(elem)) {
+			return nodo.elem.toString();
+		}
+		String resultado = elemsDesde(nodo.izq, elem);
+        if(!resultado.isEmpty()) {
+            return resultado + " " + nodo.elem.toString();
+        }
+        resultado = elemsDesde(nodo.der, elem);
+        if(!resultado.isEmpty()) {
+            return resultado + " " + nodo.elem.toString();
+        }
+        return "";
+	}
+	
+	
+	
+	
 	
 
 }

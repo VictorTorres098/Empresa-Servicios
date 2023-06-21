@@ -141,6 +141,29 @@ public class AB<T> {
 	    }
 	    return 1 + cantidadNodosVisitadosRecursivo(nodo.izq, elemento) + cantidadNodosVisitadosRecursivo(nodo.der, elemento);
 	}
+	/**
+	 * implementar el metodo dosHijos() que retorne un String con el valor de los nodos que cumplan que el nodo
+	 * tenga dos hijos que no sean nulos
+	 */
+	protected boolean tieneDosHijos(Nodo nodo) {
+		return nodo.der != null && nodo.izq != null;
+	}
+	public String dosHijos() {
+		if(raiz == null) {
+			return "vacio";
+		}
+		return dosHijos(raiz);
+	}
+	protected String dosHijos(Nodo nodo) {
+		if(nodo == null) {
+			return "";
+		}
+		if(tieneDosHijos(nodo)) {
+			return  nodo.elem.toString();
+		}
+		return " { " + dosHijos(nodo.izq) + dosHijos(nodo.der) + " } "; 
+	}
+	
 	
 	
 

@@ -11,7 +11,7 @@ public class Main {
 	    abb.agregar(4);
 	    abb.agregar(6);
 	    abb.agregar(8);
-	    
+	    System.out.println(abb.dosHijos()); // Debería imprimir "{5}
 	    //System.out.println(arbol.cantidadNodosVisitados(4)); // Debería imprimir 2
 	    //System.out.println(arbol.cantidadNodosVisitados(6)); // Debería imprimir 3
 	    //System.out.println(arbol.cantidadNodosVisitados(9)); // Debería imprimir 0
@@ -40,7 +40,10 @@ public class Main {
         System.out.println(abbb.mayoresHojas(6)); // Debería imprimir 1
         System.out.println(abbb.mayoresHojas(8)); // Debería imprimir 0
 	
-	    
+        System.out.println(abbb.elemsDesde(4)); // Debería imprimir "4 3 5"
+        System.out.println(abbb.elemsDesde(6)); // Debería imprimir "6 7 5"
+        System.out.println(abbb.elemsDesde(9)); // Debería imprimir ""
+    
 	}
 
 }
