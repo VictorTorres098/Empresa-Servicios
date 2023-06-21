@@ -1,4 +1,4 @@
-package arbolesBinarios;
+package arbolesBinariosint;
 
 public class Main {
 

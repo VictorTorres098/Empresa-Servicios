@@ -1,4 +1,4 @@
-package arbolesBinarios;
+package arbolesBinariosint;
 
 import java.util.ArrayList;
 import java.util.List;
