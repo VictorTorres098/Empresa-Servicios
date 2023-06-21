@@ -61,32 +61,6 @@ public class ABB<T extends Comparable<T>> extends AB<T>  {
 	}
 	protected int sumaMayorMenor(Nodo nodo) {
 		return minimo() + maximo();
-	}
-	public int sumaMayorMenorv2() {
-		if(raiz == null || raiz.izq == null && raiz.der == null) {
-			return 0;
-		}
-		return sumaMayorMenorV2(raiz);
-	}
-	protected int sumaMayorMenorV2(Nodo nodo) {
-		Nodo minimo= null ;
-		if(nodo.izq == null) {
-			minimo = nodo;
-		}else {
-			sumaMayorMenorV2(nodo.izq);
-		}
-		
-		Nodo maximo = null;
-		if(nodo.der == null) {
-			maximo = nodo;
-		}else {
-			sumaMayorMenorV2(nodo.der);
-		}
-		
-		return  (int)minimo.elem + (int)maximo.elem;
-	}
-	
-	
-	
+	}	
 
 }
