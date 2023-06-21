@@ -1,6 +1,6 @@
 package arbolesGenericos;
 
-import arbolesGenericos.AB.Nodo;
+//import arbolesGenericos.AB.Nodo;
 
 public class ABB<T extends Comparable<T>> extends AB<T>  {
 	
@@ -62,5 +62,32 @@ public class ABB<T extends Comparable<T>> extends AB<T>  {
 	protected int sumaMayorMenor(Nodo nodo) {
 		return minimo() + maximo();
 	}	
+	/**
+	 * Devuelve la cantidad de nodos cuyo valor es mayor o igual que elem y son hojas. Implementar todos los metodos
+	 * nesesarios utilizando el IREP de un ABB para escribir el algortimo
+	 */
+	public int mayoresHojas(T elem) {
+		if(raiz == null) {
+			return 0;
+		}
+		return mayoresHojas(raiz, elem);
+	}
+	protected int mayoresHojas(Nodo padre, T elem) {
+		if(padre == null) {
+			return 0;
+		}
+		if(padre.elem.compareTo(elem) >= 0 && esHoja(padre)) {
+			return 1;
+		}
+		return mayoresHojas(padre.izq, elem) + mayoresHojas(padre.der, elem);	
+	}
+	/**
+	 * Un nodo es hoja si no tiene hijos izq y der
+	 * @return
+	 */
+	protected boolean esHoja(Nodo nodo) {
+		return nodo.izq == null && nodo.der == null;
+	}
+	
 
 }
