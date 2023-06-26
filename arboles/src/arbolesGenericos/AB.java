@@ -70,18 +70,18 @@ public class AB<T> {
 		return estaBalanceado(raiz);
 	}
 	protected boolean estaBalanceado(Nodo padre) {
-		if(raiz == null) {
+		if(padre == null) {
 			return true;
 		}
-		int alturaNodoDer = altura(raiz.der);
-		int alturaNodoIzq = altura(raiz.izq);
+		int alturaNodoDer = altura(padre.der);
+		int alturaNodoIzq = altura(padre.izq);
 		int diferenciaDeAltura = Math.abs(alturaNodoDer - alturaNodoIzq);
 		
 		if(diferenciaDeAltura > 1) {
 			return false;
 		}
 		
-		return estaBalanceado(raiz.der) && estaBalanceado(raiz.izq);
+		return estaBalanceado(padre.der) && estaBalanceado(padre.izq);
 	}
 	
 	public int minimo() {
@@ -126,7 +126,7 @@ public class AB<T> {
 		if(n == null) {
 			return "";
 		}
-		return n.elem + "[" + postOrden(n.izq) + " - " + postOrden(n.der) + "]";
+		return "[" + postOrden(n.izq) + " - " + postOrden(n.der) + n.elem + "]";
 	}
 	public int cantidadNodosVisitados(T elemento) {
 	    return cantidadNodosVisitadosRecursivo(raiz, elemento);
@@ -163,6 +163,42 @@ public class AB<T> {
 		}
 		return " { " + dosHijos(nodo.izq) + dosHijos(nodo.der) + " } "; 
 	}
+	/**
+	 * El metodo busca ek nayor valor y este pasa a ser la raiz, luego recorre el arbol y aumenta todos los valores
+	 * en los nodos, con valores consecutivos a partir del valor del nodo raiz.
+	 */
+	public void aumentarValor() {
+		if(raiz == null) {
+			throw new RuntimeException("el arbol esta vacio");
+		}
+		aumentarValor(raiz);
+	}
+	protected void aumentarValor(Nodo padre) {
+		Integer max = (Integer) maximo();
+	}
+
+	private Integer maximo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	/**
+	 * Meotdo el cual cuando un nodo tiene ambos hijos izquierdo y derecho distinto de null, copia el elemento
+	 * del nodo izquierdo en el elemento del nodo derecho
+	 */
+	public void copiaHermanosIzq() {
+		copiaHermanosIzq(raiz);
+	}
+	protected void copiaHermanosIzq(Nodo nodo) {
+		if(nodo == null) {
+			return; //break artificial
+		}
+		if(nodo.izq != null && nodo.der != null) {
+			nodo.der.elem = nodo.izq.elem;
+		}
+		copiaHermanosIzq(nodo.izq);
+		copiaHermanosIzq(nodo.der);
+	}
+	
 	
 	
 	

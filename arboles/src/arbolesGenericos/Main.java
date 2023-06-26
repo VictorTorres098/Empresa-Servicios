@@ -11,10 +11,20 @@ public class Main {
 	    abb.agregar(4);
 	    abb.agregar(6);
 	    abb.agregar(8);
-	    System.out.println(abb.dosHijos()); // Debería imprimir "{5}
+	    //System.out.println(abb.dosHijos()); // Debería imprimir "{5}
 	    //System.out.println(arbol.cantidadNodosVisitados(4)); // Debería imprimir 2
 	    //System.out.println(arbol.cantidadNodosVisitados(6)); // Debería imprimir 3
 	    //System.out.println(arbol.cantidadNodosVisitados(9)); // Debería imprimir 0
+	 // Imprimir el árbol antes de llamar al método copaHermanosIzq()
+	    System.out.println("Árbol antes de llamar al método copaHermanosIzq():");
+	    System.out.println("InOrder: " + abb.toStringInOrder());
+
+	    // Llamar al método copaHermanosIzq()
+	    abb.copiaHermanosIzq();
+
+	    // Imprimir el árbol después de llamar al método copaHermanosIzq()
+	    System.out.println("Árbol después de llamar al método copaHermanosIzq():");
+	    System.out.println("InOrder: " + abb.toStringInOrder());
 	    
 	    //System.out.println(arbol.toStringPreOrder());
 	    
@@ -36,14 +46,13 @@ public class Main {
         abbb.agregar(6);
         abbb.agregar(8);
 
-        System.out.println(abbb.mayoresHojas(4)); // Debería imprimir 2
-        System.out.println(abbb.mayoresHojas(6)); // Debería imprimir 1
-        System.out.println(abbb.mayoresHojas(8)); // Debería imprimir 0
+        //System.out.println(abbb.mayoresHojas(4)); // Debería imprimir 2
+        //System.out.println(abbb.mayoresHojas(6)); // Debería imprimir 1
+        //System.out.println(abbb.mayoresHojas(8)); // Debería imprimir 0
 	
-        System.out.println(abbb.elemsDesde(4)); // Debería imprimir "4 3 5"
-        System.out.println(abbb.elemsDesde(6)); // Debería imprimir "6 7 5"
-        System.out.println(abbb.elemsDesde(9)); // Debería imprimir ""
+        //System.out.println(abbb.elemsDesde(4)); // Debería imprimir "4 3 5"
+        //System.out.println(abbb.elemsDesde(6)); // Debería imprimir "6 7 5"
+        //System.out.println(abbb.elemsDesde(9)); // Debería imprimir ""
     
 	}
-
 }
