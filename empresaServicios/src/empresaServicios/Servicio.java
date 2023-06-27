@@ -14,13 +14,21 @@ public abstract class Servicio {
 	}
 	protected abstract double calcularCosto();
 	
-	protected abstract String tipoServicio();
+	protected String tipoServicio() {
+		return this.tipo;
+	}
 	
-	protected abstract void cambiarEspecialista(Especialista nuevoEspecialista);
+	protected void cambiarEspecialista(Especialista nuevoEspecialista) {
+		this.especialista = nuevoEspecialista;
+	}
 	
-	protected abstract Especialista especialistaResposable();
+	protected Especialista especialistaResposable() {
+		return this.especialista;
+	}
 	
-	protected abstract String direccionDelSerivicio();
+	protected String direccionDelSerivicio() {
+		return this.direccion;
+	}
 	
 	
 

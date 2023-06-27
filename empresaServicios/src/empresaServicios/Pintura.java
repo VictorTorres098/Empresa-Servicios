@@ -21,26 +21,4 @@ public class Pintura extends Servicio {
 	protected double calcularCosto() {
 		return metrosCuadrados * precioPorMetroCuadrado;
 	}
-
-	@Override
-	protected String tipoServicio() {
-		return this.tipo;
-	}
-
-	@Override
-	protected void cambiarEspecialista(Especialista nuevoEspecialista) {
-		this.especialista = nuevoEspecialista;
-		
-	}
-	@Override
-	protected Especialista especialistaResposable() {
-		return this.especialista;
-	}
-
-	@Override
-	protected String direccionDelSerivicio() {
-		return this.direccion;
-	}
-	
-
 }
