@@ -23,7 +23,7 @@ public abstract class Servicio {
 	}
 	
 	protected Especialista especialistaResposable() {
-		return this.especialista;
+		return this.especialista;	//O(1)
 	}
 	
 	protected String direccionDelSerivicio() {

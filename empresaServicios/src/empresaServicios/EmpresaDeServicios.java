@@ -67,7 +67,7 @@ public class EmpresaDeServicios {
 	}
 	
 	private boolean existeEspecialista(int nroEpecialista) {
-		return registroEspecialistas.containsKey(nroEpecialista);
+		return registroEspecialistas.containsKey(nroEpecialista); //la orden de complejidad es O(1) por lo tanto la funcion existeEspecialista() = O(1);
 	}
 	
 	private boolean especialidadAceptada(String especialidad) {
@@ -299,13 +299,26 @@ public class EmpresaDeServicios {
 	*/
 	
 	public String listadoServiciosAtendidosPorEspecialista(int nroEspecialista) {
-		if(!existeEspecialista(nroEspecialista)) {
-			throw new RuntimeException("El especialista no se encuentra registrado o es erroneo el nroEspecialista");
+		if(!existeEspecialista(nroEspecialista)) { //O(1);
+			throw new RuntimeException("El especialista no se encuentra registrado o es erroneo el nroEspecialista"); //O(1);
 		}
-		Especialista e = registroEspecialistas.get(nroEspecialista);
-		String lista = servicios.serviciosAtendidosPorEspecialista(e); 
-		return lista;
+		Especialista e = registroEspecialistas.get(nroEspecialista); //get() por documentacion es O(1) entonces.. O(1) + O(1) = O(2);
+		String lista = servicios.serviciosAtendidosPorEspecialista(e); // O(1) + O(n)
+		return lista; //O(1); 
 	}
+	/**
+	 * O(1) + O(1) + O(2) + O(1) + O(n) + O(1);
+	 * O(1) + O(1) + O(1) + O(1) + O(n) + O(1) = regla 4
+	 * O(5) + O(n)
+	 * O(1) + O(n) = regla 4
+	 * O(1 + n) = regla 2
+	 * O(max{1,n}) = regla 2
+	 * O(n) = regla 1
+	 * 
+	 * Complejidad de listadoServiciosAtendidosPorEspecialista = O(n);   
+	 */
+	
+	
 	
 	@Override
 	public String toString() {

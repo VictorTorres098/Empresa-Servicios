@@ -13,7 +13,7 @@ public class Especialista {
 		this.especialidad = especialidad;
 	}
 	protected Integer nroEspecialista() {
-		return this.nroEspecialista;
+		return this.nroEspecialista; //O(1);
 	}
 	protected boolean coicedenEspecialidad(String tipoEspecialidadRequerida) {
 		return this.especialidad.equals(tipoEspecialidadRequerida);

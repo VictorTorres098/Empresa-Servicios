@@ -109,22 +109,34 @@ public class GestionDeServicios {
 		return list;
 	}
 	protected String serviciosAtendidosPorEspecialista(Especialista e) {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder(); //O(1)
 		
-		for(Integer cod : registrosServiciosRealizados.keySet()) {
-			Servicio s = registrosServiciosRealizados.get(cod);
-			if(s.especialistaResposable().nroEspecialista().equals(e.nroEspecialista())) {
+		for(Integer cod : registrosServiciosRealizados.keySet()) { //O(n)
+			Servicio s = registrosServiciosRealizados.get(cod); // O(1) + O(1) = O(2); 
+			if(s.especialistaResposable().nroEspecialista().equals(e.nroEspecialista())) { //O(1) + O(1) + O(1) + O(1) = O(4);
 				sb.append(" + [ " + cod.toString() + " - " + s.tipoServicio() + " ] " + s.direccionDelSerivicio()+"\n" );
-			}
+			}						//O(1) + O(1) + O(1) + O(1) + O(1) = O(5);
 		}
-		if(sb.isEmpty()) {
+		if(sb.isEmpty()) { //O(1);
 			return "";
 		}else{
 			return sb.toString();
 		}
 	}
+	// comlejidad de serviciosAtendidosPorEspecialista = O(1) + O(n) * O(2) + O(4) + O(5) + O(1);
+	/**
+	 * Complejidad
+	 * O(1) + O(n) + O(12);
+	 * O(1) + O(n) * O(1) = regla 4
+	 * O(1) + O(n) = regla 3
+	 * O(1 + n) = regla 2
+	 * O(max{1,n}) = regla 2
+	 * O(n) = regla 1  
+	 * 
+	 * serviciosAtendidosPorEspecialista = O(n); 
+	 */
 	
-	public boolean tiposDeServiciosRegistrados(String tipoServicio) {
+	protected boolean tiposDeServiciosRegistrados(String tipoServicio) {
 		return cajaEmpresa.containsKey(tipoServicio);
 	}
 	
